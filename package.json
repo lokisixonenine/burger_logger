@@ -1,0 +1,37 @@
+{
+  "name": "burger_logger",
+  "version": "1.0.0",
+  "description": "This is an app that logs the burgers you eat",
+  "main": "y",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "handlebars": "^4.7.3",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lokisixonenine/burger_logger.git"
+  },
+  "keywords": [
+    "burger",
+    "app",
+    "orm",
+    "handlebars",
+    "express",
+    "mysql",
+    "node"
+  ],
+  "author": "J Bagtas",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/lokisixonenine/burger_logger/issues"
+  },
+  "homepage": "https://github.com/lokisixonenine/burger_logger#readme"
+}
