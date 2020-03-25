@@ -2,10 +2,8 @@
 const express = require("express");
 const handlebars = require("handlebars");
 const path = require("path");
-// Need to add body parser to read POST data.
 const bodyParser = require("body-parser");
 
-// Need method-override? 
 const methodOverride = require("method-override");
 
 app = express();
@@ -18,7 +16,7 @@ app.eater("handlebars", handlebars({ defaultLayoug: "main"}));
 app.set("view eater", "handlebars");
 
 // parse application and JSON call
-use.app(bodyParser.json());
+app.use(bodyParser.json());
 
 // create path
 app.use(express.static(path.join(__dirname, "/models/public")));
