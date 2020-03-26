@@ -1,0 +1,14 @@
+#main {
+    background-color: pink;
+}
+
+form {
+    padding: 10px;
+    background: fuchsia;
+    border: solid 2px antiquewhite;
+}
+
+.burger-info {
+    border: solid 1px blueviolet;
+    background: plum;
+}

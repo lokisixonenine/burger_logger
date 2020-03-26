@@ -11,6 +11,15 @@ router.get("/", (req, res) => {
         };
         res.render("index", burgOb);
     })
+
+})
+
+router.post("/burgers/create", (req, res) => {
+    burger.create(
+        req.body.new_burger,
+        (result) => {
+            res.redirect("/");
+        })
 })
 
 router.put("/burgers/:id", (req, res) => {

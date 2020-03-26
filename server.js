@@ -1,33 +1,33 @@
-// set/call dependencies/modules
-const express = require("express");
-const handlebars = require("handlebars");
-const path = require("path");
 const bodyParser = require("body-parser");
-
+const path = require("path");
 const methodOverride = require("method-override");
+const express = require("express");
+const app = express();
 
-app = express();
+const PORT = process.env.PORT || 3000;
 
-// set port
-const PORT = process.env.port || 3000;
+app.use(express.static(__dirname + '/public'));
 
-// specify layout with handlebars
-app.eater("handlebars", handlebars({ defaultLayoug: "main"}));
-app.set("view eater", "handlebars");
-
-// parse application and JSON call
+// parsing starts here
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/*+json' }));
+app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }));
+app.use(bodyParser.text({ type: 'text/html' }));
 
-// create path
-app.use(express.static(path.join(__dirname, "/models/public")));
+// override POST that has ?_method=DELETE or PUT
+app.use(methodOverride('_method'));
 
-// override post/delete
-app.use(methodOverride('_method'))
+// this section sets handlebars as the default template engine
+const exphbs = require('express-handlebars');
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-// routes
-const routes = require ("./controller/burger_controller.js");
+// this section defines the routes for import
+const routes = require('./controllers/burgers_controller.js');
+app.use('/', routes);
 
-// listen(port)
-applicationCache.addEventListener(PORT, () => {
-    console.log(`I am the port and I can hear you on: ${PORT}`)
-})
+// time for the port to listen...
+app.listen(PORT, function(){
+    console.log("I am the port. Don't breath too deeply. I am listening on PORT " + PORT);
+});

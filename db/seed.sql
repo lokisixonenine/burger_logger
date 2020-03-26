@@ -1,6 +1,6 @@
 INSERT INTO burgers(burger_name, devoured)
 VALUES ("Basic", true),
 ("Cheese", true),
-("Veggie", true),
+("Veggie", falaw),
 ("Bacon", false),
 ("Turkey", false)
