@@ -1,0 +1,49 @@
+<br>
+    <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif: color:black">Eat Da Burger App!</h1>
+<br>
+<div class="row burger-info">
+<div class="col-xs-12 col-md-4">
+    <ul>
+        <h5>Burgers</h5>
+        {{#each burgers}}
+        <!-- Section for NOT DEVOURED burgers -->
+        {{#unless deveoured}}
+            <li>
+                <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                <input name="devour" type="hidden" class="form-control">
+                <p>{{ burger_name }}
+                    <button type="submit" data-id="{{this.id}}" class="btn btn-warning btn=xs" id="devour" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">DEVOUR</button>
+                </p>
+            </form>
+        </li>
+        {{/unless}}
+    {{/each}}
+    </ul>
+</div>
+
+<div class="col-xs-12 col-md-4">
+    <h5>DEVOURED BURGERS</h5>
+    <ul style="opacity:0.5">
+        {{#each burgers}}
+        {{#if devoured}}
+        <li>
+            <p>{{ burger_name }}
+
+            </p>
+        </li>
+        {{/if}}
+    {{/each}}
+    </ul>
+</div>
+
+<!-- this section adds a burger -->
+<div class="col-xs-12 col-md-4">
+    <form action="/burgers/create" method="POST">
+    <label>Submit your Burger Order</label>
+    <input name="new_burger" type="text" class="form-control">
+    <br>
+    <button class="btn btn-warning" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Submit</button>
+    </form>
+</div>
+
+</div>

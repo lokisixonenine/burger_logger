@@ -1,0 +1,21 @@
+const orm = require("../config/orm.js");
+
+const burger = {
+    all: function(cb){
+        orm.all(functio(res){
+            cb(res);
+        })
+    },
+    create: function(name, cb) {
+        orm.insertOne(name, function(res) {
+            cb(res);
+        })
+    },
+    update: function(id, cb) {
+        orm.updateOne(id, function(res) {
+            cb(res);
+        })
+    }
+}
+
+module.exports = burger;
