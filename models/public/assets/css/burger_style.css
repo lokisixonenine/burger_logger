@@ -1,6 +1,3 @@
-#main {
-    background-color: pink;
-}
 
 form {
     padding: 10px;
@@ -8,7 +5,50 @@ form {
     border: solid 2px antiquewhite;
 }
 
-.burger-info {
-    border: solid 1px blueviolet;
-    background: plum;
+
+.container {
+    background-color: pink;
+    width: 100%;
+    height: 100%;
+    border: 2px solid blueviolet;
+    padding: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.row {
+    height: 100%;
+}
+
+.div {
+    background-color: antiquewhite;
+}
+
+#burgerlogo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+.col-md-5 {
+    width: 45%;
+    background-color: burlywood;
+    border: solid;
+    padding: 20px;
+    display: block;
+}
+
+img {
+    padding: none;
+}
+
+li {
+    font-size: 14px;
+}
+
+.eatBurger {
+    margin-left: 20px;
 }

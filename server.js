@@ -1,33 +1,29 @@
-const bodyParser = require("body-parser");
-const path = require("path");
-const methodOverride = require("method-override");
 const express = require("express");
+const path = require("path");
+const exphbs = require("express-handlebars");
+const methodOverride = require("method-override");
+const routes = require("./controllers/burgers_controller.js");
+
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const bodyParser = require("body-parser");
 
-app.use(express.static(__dirname + '/public'));
-
-// parsing starts here
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("./public"));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/*+json' }));
-app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }));
-app.use(bodyParser.text({ type: 'text/html' }));
-
-// override POST that has ?_method=DELETE or PUT
 app.use(methodOverride('_method'));
+app.use(routes);
 
-// this section sets handlebars as the default template engine
-const exphbs = require('express-handlebars');
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+const PORT = process.env.PORT || 8080;
+
+app.engine("handlebars", exphbs({
+    defaultLayout: "main"
+}));
 app.set("view engine", "handlebars");
 
-// this section defines the routes for import
-const routes = require('./controllers/burgers_controller.js');
-app.use('/', routes);
 
-// time for the port to listen...
-app.listen(PORT, function(){
-    console.log("I am the port. Don't breath too deeply. I am listening on PORT " + PORT);
+app.listen(PORT, function () {
+    console.log("Speak softly and don't breath too hard. I am the port. I am listening on  " + PORT);
 });
