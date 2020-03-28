@@ -1,56 +1,42 @@
-<div class = "container">
-    <div class = "row heading">
-        <div class="col-md-12">
-            <img class="img-responsive" id="burgerlogo" src = "/models/public/assets/img/burger.png" width="200" height="200" alt="kawaii burger logo">
-        </div>
-    </div>
+<br><h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:black">Eat Da Kawaii Burger!</h1>
+<br>
 
-    <div class="row burgerDisplay">
-        <div class="col-md-5" id="burgersToEat">
-            <h2>Have a Kawaii burger!</h2>
-            <ul class="list-group">
-                {{#each burgers}} {{#unless this.devoured}}
-                <li class="list-group-item uneaten">
-                    <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-                        <img class="img-responsive" src="/models/public/assets/img/sm-burger.png" alt="delicious burgers" align="left" />
-                        {{this.burger_name}}
-                        <input type="hidden" name="devoured" value="true">
-                        <button type="submit" class="eatBurger">Eat it!!!</button>
-                    </form>
-                </li>
-                {{/unless}} {{/each}}
-            </ul>
-        </div>
-        
-    <div class="col-md-2" id="blank")
-        <h3></h3>
-    </div>
-
-    <div class="col-md-5" id="burgersEaten">
-        <h2>DEVOURED Burgers!</h2>
-        <ul class="list-group">
-            {{#each burgers}} {{#if this.devoured}}
-            <li class="list-group-item eatem">
-                <img class="img responsive" src="/models/public/assets/img/sm-burger.png" alt="delicous burger" align="left" />
-                <span> {{this.burger_name}} </span>
+<div class = "row burger-info">
+    <div class="col-xs-12 col-md-4">
+        <ul>
+            <h3>Burgers</h3>
+            {{#each burgers}}
+            {{#unless devoured}}
+            <li>
+                <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                <p>{{ burger_name }}
+                    <button type="submit"data_id="{{this.id}}" class="btn btn-warning btn-xs" id="devour" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        DEVOUR YOUR BURGER!</button>
+                </p></form>
             </li>
-            {{/if}} {{/each}}
+            {{/unless}}
+        {{/each}}
         </ul>
     </div>
 
-    </div>
+<div class="col-xs-12 col-md-4">
+    <h4>Already DEVOURED Burgers</h4>
+    <ul style="opacity: 0.5">
+        {{#each burgers}}
+            {{#if devoured}}
+            <li><p>{{ burger_name }}</p></li>
+            {{/if}}
+        {{/each}}
+    </ul>
+</div>
 
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <h2>What chu want? (Add a burger)</h2>
-            <form class="newBurger" action="burgers/new" method="POST">
-                <div class="form-group">
-                    <label for="burgerName" class="addNewBurger">Burger Name:</label>
-                    <input type="text" id="burgerName" name="name" autofocus>
-                </div>
-                <button type="submit" class="button-add">Add your burger</button>
-                </form>
-        </div>
-    </div>
+<div class = "col-xs-12 col-md-4">
+    <form action-"/burgers/create" METHOD="POST">
+        <label>Submit a Cute Burger!</label>
+        <input name="new_burger" type="text" class="form-control">
+        <br> 
+        <button class="btn btn-warning" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">SUBMIT</button>
+        </form>
+</div>
 
 </div>
