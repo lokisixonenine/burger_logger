@@ -1,20 +1,20 @@
 const orm = require("../config/orm.js");
 
 var burger = {
-    selectAllBurgers: function (cb) {
-        orm.selectAllBurgers(function (res) {
+    all: function (cb) {
+        orm.all(function (res) {
             cb(res);
         })
     },
 
-    createBurger: function (name, cb){
-        orm.createBurger(name,function(res) {
+    create: function (name, cb){
+        orm.create(name,function(res) {
             cb(res);
         });
     },
 
-    updateBurger: function (id, cb) {
-        orm.updateBurger(id, function (res){
+    update: function (id, cb) {
+        orm.update(id, function (res){
             cb(res);
         });
     }

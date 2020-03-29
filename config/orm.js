@@ -7,14 +7,14 @@ const orm = {
           })
       },
 
-      insertOne: (name, cb) => {
+      insert: (name, cb) => {
           connection.query("INSERT INTO burgers(burger_name, devoured) VALUES ( ?, false)", [name], (err, result) => {
               if (err) throw err;
               cb(result);
           })
       },
 
-      updateOne: (id, cb) => {
+      update: (id, cb) => {
           connection.query("UPDATE burgers SET ? WHERE ?", [{
               devoured: true
           }, {
