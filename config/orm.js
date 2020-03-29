@@ -1,20 +1,20 @@
-const connection = require("../config/connection.js");
-const orm = {
-      all: (cb) => {
+var connection = require("../config/connection.js");
+var orm = {
+      selectAllBurgers: (cb) => {
           connection.query("SELECT * FROM burgers", (err, result) => {
               if (err) throw err;
               cb(result);
           })
       },
 
-      insertOne: (name, cb) => {
+      insertBurger: (name, cb) => {
           connection.query("INSERT INTO burgers(burger_name, devoured) VALUES ( ?, false)", [name], (err, result) => {
               if (err) throw err;
               cb(result);
           })
       },
 
-      updateOne: (id, cb) => {
+      updateBurger: (id, cb) => {
           connection.query("UPDATE burgers SET ? WHERE ?", [{
               devoured: true
           }, {

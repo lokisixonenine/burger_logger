@@ -1,12 +1,12 @@
-const express = require("express");
-const path = require("path");
-const bodyParser = require("body-parser");
-const exphbs = require("express-handlebars");
-const methodOverride = require("method-override");
-//const routes = require("./controllers/burgers_controller.js");
+var express = require("express");
+var path = require("path");
+var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
+var methodOverride = require("method-override");
+//var routes = require("./controllers/burgers_controller.js");
 
-const app = express();
-const PORT = process.env.PORT || 8080;
+var app = express();
+var PORT = process.env.PORT || 8080;
 
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "/models/public")));
 app.use(methodOverride('_method'))
 
-const routes = require("./controllers/burgers_controller.js");
+var routes = require("./controllers/burgers_controller.js");
 app.use("/", routes);
 app.use("/create", routes);
 
