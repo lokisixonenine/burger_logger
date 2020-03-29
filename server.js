@@ -10,7 +10,7 @@ var PORT = process.env.PORT || 8080;
 
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engein", "handlebars");
+app.set("view engine", "handlebars");
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "/models/public")));
 app.use(methodOverride('_method'))
