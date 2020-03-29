@@ -1,12 +1,11 @@
 const express = require("express");
-// const bodyParser = require("body-parser");
 const router = express.Router();
 
-let burger = require("../models/burger.js")
+var burger = require("../models/burger.js")
 
 router.get("/", (req, res) => {
-    burger.selectAll((data) => {
-        const burgOb = {
+    burger.selectAllBurgers((data) => {
+        var burgOb = {
             burgers: data,
         };
         res.render("index", burgOb);
@@ -15,7 +14,7 @@ router.get("/", (req, res) => {
 })
 
 router.post("/burgers/create", (req, res) => {
-    burger.create(
+    burger.createBurger(
         req.body.new_burger,
         (result) => {
             res.redirect("/");
@@ -23,7 +22,7 @@ router.post("/burgers/create", (req, res) => {
 })
 
 router.put("/burgers/:id", (req, res) => {
-    burger.update(
+    burger.updateBurger(
         req.params.id,
         (result) => {
             res.redirect("/")
