@@ -1,6 +1,6 @@
-const connection = require("../config/connection.js");
-const orm = {
-      all: (cb) => {
+var connection = require("../config/connection.js");
+var orm = {
+      selectAllBurgers: (cb) => {
           connection.query("SELECT * FROM burgers", (err, result) => {
               if (err) throw err;
               cb(result);
@@ -14,7 +14,7 @@ const orm = {
           })
       },
 
-      update: (id, cb) => {
+      update: (id, cb) => {      
           connection.query("UPDATE burgers SET ? WHERE ?", [{
               devoured: true
           }, {
